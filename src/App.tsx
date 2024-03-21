@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes,Route } from "react-router-dom";
+import { PublicRouters } from "./router";
 
-function App() {
+const App: React.FC = () => {
+  console.log(PublicRouters)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className=''>
+      <Routes>
+        {
+          PublicRouters.map((route,index)=>{
+            const Page=route.component
+            return <Route path={route.path} element={<Page/>} key={index}></Route>
+          })
+        }
+      </Routes>
     </div>
   );
 }
-
 export default App;
